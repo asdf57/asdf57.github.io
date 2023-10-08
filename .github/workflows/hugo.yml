@@ -39,7 +39,7 @@ jobs:
           submodules: recursive
       - name: Decrypt files
         env:
-          DECRYPTION_PASSWORD: ${{ secrets.DECRYPTION_PASSWORD }}
+          DECRYPTION_PASSWORD: "${{ secrets.DECRYPTION_PASSWORD }}"
         run: |
           openssl enc -aes-256-cbc -pbkdf2 -d -in archive.enc -out archive.tar -pass env:DECRYPTION_PASSWORD
           tar -xvf archive.tar
