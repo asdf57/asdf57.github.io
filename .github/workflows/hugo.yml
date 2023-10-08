@@ -38,6 +38,8 @@ jobs:
         with:
           submodules: recursive
       - name: Decrypt files
+        env:
+          DECRYPTION_PASSWORD: ${{ secrets.DECRYPTION_PASSWORD }}
         run: |
           sudo apt update && sudo apt install openssl
           openssl enc -aes-256-cbc -pbkdf2 -d -in archive.enc -out archive.tar -pass env:DECRYPTION_PASSWORD
