@@ -34,6 +34,7 @@ jobs:
       HUGO_VERSION: 0.108.0
     steps:
       - name: Decrypt files
+        uses: actions/checkout@v3
         run: |
           sudo apt update && sudo apt install openssl
           openssl enc -aes-256-cbc -pbkdf2 -d -in archive.enc -out archive.tar -pass env:DECRYPTION_PASSWORD
