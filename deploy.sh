@@ -1,6 +1,9 @@
 #!/bin/bash
 
-tar -cvzf archive.tar .
+[[ -f archive.tar ]] && rm archive.tar
+[[ -f archive.enc ]] && rm archive.enc
+
+tar -cvzf archive.tar --exclude='.git' .
 openssl enc -aes-256-cbc -pbkdf2 -salt -in archive.tar -out archive.enc -pass file:passfile
 
 git add -A
