@@ -42,7 +42,7 @@ jobs:
           DECRYPTION_PASSWORD: ${{ secrets.DECRYPTION_PASSWORD }}
         run: |
           openssl enc -aes-256-cbc -pbkdf2 -d -in archive.enc -out archive.tar -pass env:DECRYPTION_PASSWORD
-          tar -xvf archive.tar
+          tar -xf archive.tar
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
